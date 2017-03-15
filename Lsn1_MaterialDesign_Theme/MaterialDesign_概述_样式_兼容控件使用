@@ -1,0 +1,53 @@
+关于MaterialDesign
+
+android5.0开始引入
+google提倡的一种风格，理念和原则
+拟物设计，扁平化设计
+MD是拟物设计和扁平设计体验
+
+1.对于美工：遵循MD的设计界面
+2.对于产品经理：遵循MD设计，页面的跳转及动画效果，交互设计
+3.对于开发人员：参与原型设计，辅助美工原型设计的素材准备
+              开发MD的设计－－－界面，动画，转场动画等等
+
+
+MD的使用开发
+1.使用google提供的api来实现
+2.自定义
+谷歌开发，收集了一系列最新的开源的项目(很多是自己开发的)汇集到最新的support包里面或直接放到最新的api里面
+（preference 可以通过配置页面达到页面效果）用的比较少
+
+android-support-v4   最低兼容Android1.6系统          Viewpager
+
+android-support-v7   最低兼容Android2.1系统          Appcompat,CardView,gridlayout,mediarouter,palette,preference,recyclerview(兼容到3.0)
+
+这个工程可以让开发人员统一开发标准，在系统任何系统里面都能统一标准(比如：theme,value,布局,新的控件，新的动画特效实现)
+一.创建项目一般倒入support-v7包，会报错
+原因是：1.sdk太旧了；2.build版本太低；3.兼容包没有更新；
+二.报res/value/them/xxxx属性不存在 等等问题
+原因：因为你引入的最新的appcomapt-v7项目比较，build版本要也要是最新的
+
+一般开发兼容到4.0
+
+SDK升级：兼容包升级，sdk升级
+
+
+---------------------MaterialDesign控制项目的样式---------------------
+1.写自己的全局样式
+(1)theme的引用遵循最近原则选择离版本最近的values版本引用
+
+(2)<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+       <!-- Customize your theme here. -->
+       <item name="colorPrimary">@color/colorPrimary</item>
+       <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+       <item name="colorAccent">@color/colorAccent</item>
+       <item name="android:windowBackground">@color/colorAccent</item>
+
+   </style>
+
+name="colorPrimary"表示设置定义了一个属性，覆盖父Theme属性的值
+name="android:windowBackground"表示设置了系统的属性
+
+colorPrimary            主色
+colorPrimaryDark        副主色一般用于状态栏，底部导航栏
+colorAccett             各个控件的基调的颜色Checkbox，Radio
