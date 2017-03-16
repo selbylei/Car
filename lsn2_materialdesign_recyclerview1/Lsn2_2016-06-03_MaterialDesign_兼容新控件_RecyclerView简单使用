@@ -1,0 +1,60 @@
+版本
+1.compileSdk 编译版本，编译版本很重要，target再高也只能限制在compliesSDK
+2.minSDK   兼容到最低版本
+3.targetSDK
+
+
+multiple dex file.....appcompat/res/com.android.v7& 错误
+项目和子项目的jar包重复
+
+
+MaterialDesign 处理碎片化，使不同的机型不同的版本统一ui
+
+
+兼容性开发一般需要创建3个版本的value文件夹
+values
+values-v14
+values-v21
+
+android历史重要的版本
+v14(4.0)
+v19(4.4)
+v21(4.0)
+
+
+
+----------------------兼容性控件的使用----------------------
+v7中有很多兼容的控件
+
+设置了一个alertDialog在4.0上面显示很丑,
+使用android.support.v7.app.AlertDialog统一dialog的风格，会发现dialog的选项按钮颜色为colorAccent设置的颜色
+之前做甜爱路的时候一直感觉到这个dialog的样式很难控制，原来就是这个原因
+
+1.alertDailog
+2.progressBar
+3.下拉刷新 android.support.v4.widget.SwipeRefreshLayout
+一直以为系统没有这个控件
+4.ListPopupWindow很有用的一个控件啊，之前一只以为popupWindow很高端
+5.PopupMenu非常游泳
+6.LinearLayoutCompat
+android.support.v7.widget.LinearLayoutCompat 能够给每个子控件一个下划线
+7.recyclerview (5.0之后)
+高度解藕，低耦合高内聚
+自带ViewHolder
+(1)创建adapter
+(2)设置LinearLayoutManager(Context context, int orientation, boolean reverseLayout)
+orientation 方向
+reverseLayout 数据是否
+onBindViewHolder(MyViewHolder holder, int position)中
+RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.textView.getLayoutParams();
+
+
+
+
+
+
+
+
+
+
+
