@@ -4,6 +4,7 @@ package selbylei.com.lsn2_materialdesign_recyclerview1;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -31,15 +32,16 @@ public class StaggeredAdapter extends RecyclerView.Adapter<StaggeredAdapter.MyVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        return new MyViewHolder(View.inflate(parent.getContext(), android.R.layout.simple_list_item_1, null));
-
+//        View view =View.inflate(parent.getContext(), android.R.layout.simple_list_item_1, null);
+//        View view = View.inflate(parent.getContext(), android.R.layout.simple_list_item_1, parent);
+        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {//绑定数据
 
-         RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.textView.getLayoutParams();
+        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.textView.getLayoutParams();
         params.height = heights.get(position);
         holder.textView.setBackgroundColor(Color.rgb(100, heights.get(position) - 45, heights.get(position) - 45));
         holder.textView.setLayoutParams(params);

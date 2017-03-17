@@ -48,6 +48,16 @@ reverseLayout 数据是否
 onBindViewHolder(MyViewHolder holder, int position)中
 RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.textView.getLayoutParams();
 
+bug:
+RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.textView.getLayoutParams(); 报null错误
+
+
+
+
+
+
+
+
 
 
 

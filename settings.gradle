@@ -1,1 +1,1 @@
-include ':Lsn1_MaterialDesign_Theme', ':lsn2_materialdesign_recyclerview1'
+include ':Lsn1_MaterialDesign_Theme', ':lsn2_materialdesign_recyclerview1', ':lsn3_materialdesign_layoutinflater'

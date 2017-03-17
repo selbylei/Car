@@ -1,0 +1,85 @@
+一.上次课程瀑布流效果的bug
+报错：NullPointException----LayoutParams为空
+
+View.inflate(viewGroup.getContext(), android.R.layout.simple_list_item_1, null);
+LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1,parent, false );
+
+View.inflate(viewGroup.getContext(), android.R.layout.simple_list_item_1, parent);
+最终都会调用该方法：
+inflate(resource, root, root != null);
+inflate(resource, null, false);
+经过修改：
+MyViewHolder holder = new MyViewHolder(View.inflate(viewGroup.getContext(), android.R.layout.simple_list_item_1, viewGroup));
+还是报错：
+java.lang.IllegalStateException:
+默认还是调用的：
+inflate(resource, root, root != null);
+inflate(resource, root, true);
+看源码就知道：多做了一个事情就是
+ if (root != null && attachToRoot) {
+                        root.addView(temp, params);
+                    }
+由于RecyclerView/ListView会自动将child添加到它里面去
+为何fragment的onCreateView又可以呢？
+
+
+一共3个方法，最终都是调用的inflate(@LayoutRes int resource, @Nullable ViewGroup root, boolean attachToRoot);方法
+（1）View.inflate(viewGroup.getContext(), android.R.layout.simple_list_item_1, null);
+（2）View.inflate(viewGroup.getContext(), android.R.layout.simple_list_item_1, parents);
+（3）LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1,parent, false );
+
+ 方法（1）设置了root为空；在使用RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.textView.getLayoutParams()的时候对于textView是没有
+ 父容器的，自然也没有LayoutParams；
+ 方法（2）设置了root为parent,分析源码发现会执行
+ if (root != null && attachToRoot) {
+     root.addView(temp, params);
+ }
+ 即把child添加到了root中，但是因为我们是在RecyclerView/ListView中，会自动把child放到自带的容器中，从而导致child有两个父容器若有报错"The specified child already has a parent. You must call removeView() on the child's parent first.
+"
+ 方法(3)正确的方法；
+ 对于方法（1）我们可以在给定的res文件中定义一个Textview的父容器，同样不会报错。
+
+
+ 二.LinearLayoutCompat源码分析
+ （1）LinearLayoutCompat extends ViewGroup 自定义容器，必然进过onMeasure,onLayout,onDraw方法
+
+   onMeasure 测量自身和里面所有的子控件；
+   onLayout  摆放自定和里面的所有子控件；
+   onDraw    绘制
+
+   measuredWidth，measuredHeight比之前的增加间隔线
+   最终调用setMeasuredDimension(ViewCompat.resolveSizeAndState(maxWidth, widthMeasureSpec, childState), heightSizeAndState);
+
+   查看源码发现onMeasure没有设置间隔线
+   在onDraw方法中绘制
+   最终调用drawable.draw方法来绘制，需要一个为drawable设置一个bounds，一个矩形区域
+
+
+==========================recyclerView=========================
+1.adapter的编写不熟练啊，不熟练
+2.注意getItemCount()啊 好几次了。。。
+3.recyclerView添加数据，直接变动传入的数据源，能够变更但是不是实时的
+添加，删除一定要放在adapter下面，notifyItemInserted，使用notify要注意是种类型
+notifyDataSetChanged()可以使用于数据变化；
+notify()会报错
+4.给recyclerView添加点击事件
+在adapter中设置OnItemClickListener回调接口
+interface OnItemClickListener {
+    void onItemClick(View view, int position);
+}
+在onBindViewHolder中设置回调在哪边调用
+给itemView添加点击事件调用这个回调，这边holder.itemView可以获取到itemView哦，自己写的时候不知道～～～
+holder.itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        if (mOnClickListener!=null){
+            mOnClickListener.onItemClick(v,position);
+        }
+    }
+});
+
+这边有个问题喔，在activity中调用回调的时候有可能传点过来的position有可能是之前的position，就是说当回调的时候这个item已经不存在了
+
+2个作业
+（1）封装BaseRecycerView;
+（2）position可能错位问题;
