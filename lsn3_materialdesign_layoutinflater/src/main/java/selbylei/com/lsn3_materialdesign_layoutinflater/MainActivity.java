@@ -1,5 +1,6 @@
 package selbylei.com.lsn3_materialdesign_layoutinflater;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn2;
     private boolean isGrid = false;
     private RecyclerView recyclerView;
-
+    private Context mContext;
     private List<String> list = new ArrayList<String>();
     private MyAdapter adapter;
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initView() {
+        mContext=this;
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion) {
-                Toast.makeText(getApplicationContext(), postion, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, postion+"", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         private OnItemClickListener mOnClickListener;
 
-        public MyAdapter(List list) {
+        MyAdapter(List list) {
             this.mList = list;
         }
 
@@ -105,16 +107,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, final int position) {
+        public void onBindViewHolder(MyViewHolder holder,int position) {
             holder.textView.setText(mList.get(position));
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mOnClickListener!=null){
-                        mOnClickListener.onItemClick(v,position);
-                    }
-                }
-            });
+            holder.itemView.setOnClickListener(new MyClickListener(position));
         }
 
         @Override
@@ -153,6 +148,22 @@ public class MainActivity extends AppCompatActivity {
             this.mOnClickListener = onClickListener;
         }
 
+
+        class MyClickListener implements View.OnClickListener {
+
+            private int pos;
+
+            public MyClickListener(int pos) {
+                this.pos = pos;
+            }
+
+            @Override
+            public void onClick(View v) {
+                if(mOnClickListener!=null){
+                    mOnClickListener.onItemClick(v, pos);
+                }
+            }
+        }
     }
 
 }

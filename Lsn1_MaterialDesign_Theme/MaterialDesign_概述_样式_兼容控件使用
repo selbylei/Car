@@ -17,7 +17,7 @@ MD的使用开发
 谷歌开发，收集了一系列最新的开源的项目(很多是自己开发的)汇集到最新的support包里面或直接放到最新的api里面
 （preference 可以通过配置页面达到页面效果）用的比较少
 
-android-support-v4   最低兼容Android1.6系统          Viewpager
+    android-support-v4   最低兼容Android1.6系统          Viewpager
 
 android-support-v7   最低兼容Android2.1系统          Appcompat,CardView,gridlayout,mediarouter,palette,preference,recyclerview(兼容到3.0)
 

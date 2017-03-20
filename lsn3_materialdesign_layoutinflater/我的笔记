@@ -83,3 +83,4 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
 2个作业
 （1）封装BaseRecycerView;
 （2）position可能错位问题;
+holder.itemView.setOnClickListener(new MyClickListener(position)); 设置一个新的ClickListener保存position

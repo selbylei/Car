@@ -1,0 +1,22 @@
+-----------------------------RecyclerView------------------------
+缺点：
+1.需要自定义setOnclickItemListener
+2.设置分割线RecyclerView.ItemDecoration
+（1）网格的分割线没有特定的类需要在代码中设置
+    MyItemDecoration decoration = new MyItemDecoration(mContext, mOrientation);
+    recyclerView.addItemDecoration(decoration);
+    decoration类需要自定义设置
+    onDraw()
+    getItemOffsets();设置偏移
+
+
+作业：
+1.现在DividerGridViewItemDecoration还有不完善的嘛？
+  效果上面，
+2.看ItemDecoration的源码
+
+
+
+
+
+
