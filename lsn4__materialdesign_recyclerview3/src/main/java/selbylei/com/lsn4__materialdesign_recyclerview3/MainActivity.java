@@ -56,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_line:
                         if (!isAddDivider) {
 //                            DividerItemDecoration decoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);//系统自带的DividerItemDecoration
-                            MyItemDecoration decoration = new MyItemDecoration(mContext, mOrientation); //LinearLayoutManager的分割线
+//                            MyItemDecoration decoration = new MyItemDecoration(mContext, mOrientation); //LinearLayoutManager的分割线
 //                            DividerGridViewItemDecoration decoration = new DividerGridViewItemDecoration(mContext,mOrientation);//gridView的分割线
+                            SuperDividerItemDecoration decoration = new SuperDividerItemDecoration(mContext, mOrientation);//gridView的分割线
                             recyclerView.addItemDecoration(decoration);
                             isAddDivider = true;
                         }
@@ -65,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.menu_theme:
                         if (isGrid) {
-                            GridLayoutManager layoutManager = new GridLayoutManager(mContext, 4,mOrientation,false);
+                            GridLayoutManager layoutManager = new GridLayoutManager(mContext, 4, mOrientation, false);
                             recyclerView.setLayoutManager(layoutManager);
                             isGrid = false;
                         } else {
-                            LinearLayoutManager layoutManager = new LinearLayoutManager(mContext,mOrientation,false);
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, mOrientation, false);
                             recyclerView.setLayoutManager(layoutManager);
                             isGrid = true;
                         }
@@ -81,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void initView() {
         mContext = this;
 
@@ -89,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.inflateMenu(R.menu.lsn4);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-//        layoutManger = new LinearLayoutManager(mContext,mOrientation,false);
-        layoutManger = new GridLayoutManager(mContext, 3, mOrientation, false);
+        layoutManger = new GridLayoutManager(mContext, 4, mOrientation, false);
         recyclerView.setLayoutManager(layoutManger);
         adapter = new MyAdapter(mList);
         adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
@@ -105,13 +104,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50; i++) {
             mList.add("item" + i);
         }
     }
 
     private Context mContext;
-
 
 
 }

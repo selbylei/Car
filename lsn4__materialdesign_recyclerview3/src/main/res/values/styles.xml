@@ -9,6 +9,7 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:listDivider">@drawable/item_divider</item>
     </style>
 
 </resources>

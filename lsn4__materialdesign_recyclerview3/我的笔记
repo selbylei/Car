@@ -13,7 +13,14 @@
 作业：
 1.现在DividerGridViewItemDecoration还有不完善的嘛？
   效果上面，
+
 2.看ItemDecoration的源码
+RecyclerView继承ViewGroup，内部类LayoutManager作为管理类，管理子view
+onMeasure，onLayout,onDraw;
+（1）onMeasure
+defaultOnMeasure(widthSpec, heightSpec);
+
+
 
 
 

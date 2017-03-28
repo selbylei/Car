@@ -1,0 +1,21 @@
+作业：
+1.如何实现更多条目的装饰，比如：联系人左侧添加首字母装饰
+
+recyclerView添加头部和底部
+RecyclerView没有这样的方法，需要自己解决
+所以我们通过看ListView的源码学习如何解决这个问题！！
+
+ListView.addHeaderView(){
+	 if (mAdapter != null) {
+            if (!(mAdapter instanceof HeaderViewListAdapter)) {
+                mAdapter = new HeaderViewListAdapter(mHeaderViewInfos, mFooterViewInfos, mAdapter);
+            }
+};
+ListView.setAdapter(){
+	if (mHeaderViewInfos.size() > 0|| mFooterViewInfos.size() > 0) {
+            mAdapter = new HeaderViewListAdapter(mHeaderViewInfos, mFooterViewInfos, adapter);
+        } else {
+            mAdapter = adapter;
+        }
+    }
+}

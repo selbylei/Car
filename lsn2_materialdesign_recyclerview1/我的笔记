@@ -19,7 +19,7 @@ values-v21
 android历史重要的版本
 v14(4.0)
 v19(4.4)
-v21(4.0)
+v21(5.0)
 
 
 
@@ -37,7 +37,7 @@ v7中有很多兼容的控件
 4.ListPopupWindow很有用的一个控件啊，之前一只以为popupWindow很高端
 5.PopupMenu非常游泳
 6.LinearLayoutCompat
-android.support.v7.widget.LinearLayoutCompat 能够给每个子控件一个下划线
+    android.support.v7.widget.LinearLayoutCompat 能够给每个子控件一个下划线
 7.recyclerview (5.0之后)
 高度解藕，低耦合高内聚
 自带ViewHolder

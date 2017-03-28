@@ -15,6 +15,7 @@ import android.view.View;
  */
 
 public class DividerGridViewItemDecoration extends RecyclerView.ItemDecoration {
+
     private int mOrientation = LinearLayoutManager.VERTICAL;
     private Drawable mDivider;
     private int[] attrs = new int[]{
@@ -44,12 +45,12 @@ public class DividerGridViewItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
 
-        drawVertical(c, parent);
+//        drawVertical(c, parent);
         drawHorizontal(c, parent);
 
     }
 
-    //绘制水平间隔线
+    //绘制垂直分割线
     private void drawVertical(Canvas c, RecyclerView parent) {
 
         int childCount = parent.getChildCount();
@@ -66,7 +67,7 @@ public class DividerGridViewItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    //绘制垂直间隔线
+    //绘制水平分割线
     private void drawHorizontal(Canvas c, RecyclerView parent) {
 
         int childCount = parent.getChildCount();
