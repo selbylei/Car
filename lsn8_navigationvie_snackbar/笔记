@@ -1,0 +1,15 @@
+回顾上节课讲的内容：
+DrawerLayout的使用
+
+navigationview
+google  在侧滑的MD的一种规范，所以提出一个新控件，用来规范侧滑的标准
+
+老师在使用Eclipise创建navigationview的时候，需要依赖项目design，recyclerView和cardView；我用AS只需要依赖项目design
+
+
+Toast 无法用户交互
+snackbar  用户提醒效果，用户交互
+
+
+
+
