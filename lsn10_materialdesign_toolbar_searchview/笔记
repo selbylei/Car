@@ -1,0 +1,25 @@
+--------------------------------toolbar--------------------------------
+每个app都会有一个导航
+
+谷歌第一次规范顶部导航---ActionBar(3.0API)
+actionbar使用不是很方便，开发起来很蛋疼
+大多数人使用民间的actionbar，sherlockActionBar，扩张性太差
+
+谷歌重新定义一个toolbar 现在有出现了MD的APPBar
+
+导航控件，显示标题，返回，快捷操作，菜单等。toolbar不一定放置在顶部，也可以放在底部
+
+
+来自adnroid.support.v7.widget.Toolbar
+
+使用：
+    1.引入support-v7
+    2.使用appcompat主题
+    3.写布局
+    4.Activity
+    5.设置toolbar主题
+
+
+
+
+

@@ -3,12 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="selbylei.com.lsn8_navigationvie_snackbar.ToastActivity">
+
+    <TextView
+        android:id="@+id/tv_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通模式" />
 
 
     <Button
-        android:text="来一杯toast"
         android:id="@+id/btn_toast"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="来一杯toast" />
+
+    <Button
+        android:id="@+id/btn_snakerbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="来一杯toast" />
+
 </LinearLayout>
