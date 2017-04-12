@@ -1,5 +1,6 @@
 package selbylei.com.lsn10_materialdesign_toolbar_searchview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,21 +25,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("网易新闻");
 
-//        toolbar.setSubtitle("副标题2");
         toolbar.setLogo(R.mipmap.ic_launcher);
         toolbar.setNavigationIcon(R.drawable.btn_ic_back);
         setSupportActionBar(toolbar);
-
-
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-//        getSupportActionBar().setSubtitle("副标题");
-
-
-//        searchView = (SearchView) findViewById(R.id.searchView);
-
 
     }
 
@@ -60,14 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         view.setSubmitButtonEnabled(true); //设置提交按钮是否可见
         ImageView icon = (ImageView) view.findViewById(R.id.search_go_btn);
-//        icon.setImageResource(android.R.drawable.ic_menu_view);
-        icon.setVisibility(View.VISIBLE);
-//        icon.setOnClickListener(new View.OnClickListener() {  //提交按钮监听按钮
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(),"搜索点击",Toast.LENGTH_LONG).show();
-//            }
-//        });
+         icon.setVisibility(View.VISIBLE);
         //设置宽度
         view.setMaxWidth(1000);
         //关闭搜索输入框点击事件的监听
@@ -75,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onClose() {
                 Toast.makeText(getApplicationContext(), "关闭搜索框", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+                startActivity(intent);
+                finish();
                 return false;
             }
         });

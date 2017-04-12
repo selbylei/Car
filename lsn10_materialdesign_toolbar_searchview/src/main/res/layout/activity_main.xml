@@ -16,12 +16,7 @@
         app:title="网易新闻"
          >
 
-        <!--<android.support.v7.widget.SearchView-->
-            <!--android:id="@+id/searchView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
 
-        <!--</android.support.v7.widget.SearchView>-->
 
     </android.support.v7.widget.Toolbar>
 
