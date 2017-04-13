@@ -56,8 +56,6 @@ public class HomeFragment extends Fragment {
                 tv_title.setTextColor(titleColor);
                 tv_content.setBackgroundColor(backgroundColor);
                 tv_content.setTextColor(textColor);
-
-
             }
         });
 
