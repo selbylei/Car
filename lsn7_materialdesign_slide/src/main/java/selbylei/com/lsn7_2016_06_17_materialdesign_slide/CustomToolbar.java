@@ -1,7 +1,6 @@
 package selbylei.com.lsn7_2016_06_17_materialdesign_slide;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
@@ -24,6 +23,4 @@ public class CustomToolbar extends Toolbar {
         super(context, attrs, defStyleAttr);
     }
 
-
-    
 }
